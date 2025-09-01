@@ -1002,6 +1002,8 @@ $dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes',
             <a href="materias.php" class="header-link">Materias</a>
             <a href="profesores.php" class="header-link">Profesores</a>
             <a href="detalle_dia.php?fecha=<?php echo date('Y-m-d'); ?>" class="header-link">Ver Hoy</a>
+            <a href="carreras.php" class="header-link">Carreras</a>
+            <a href="curso_ingreso.php" class="header-link">Curso de ingreso</a>
         </div>
     </div>
 
