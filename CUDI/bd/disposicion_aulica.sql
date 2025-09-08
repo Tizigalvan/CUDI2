@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2025 a las 03:31:52
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 05-09-2025 a las 19:57:41
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1409,6 +1409,7 @@ INSERT INTO `profesores` (`id_profesor`, `nombre`, `apellido`, `correo`, `telefo
 CREATE TABLE `tarjetas_disposicion` (
   `id_tarjeta` int(11) NOT NULL,
   `fecha` date NOT NULL,
+  `cantidad_estudiantes` varchar(20) NOT NULL,
   `turno_id` int(11) NOT NULL,
   `itinerario_id` int(11) NOT NULL,
   `materia_id` int(11) NOT NULL,
@@ -1422,9 +1423,10 @@ CREATE TABLE `tarjetas_disposicion` (
 -- Volcado de datos para la tabla `tarjetas_disposicion`
 --
 
-INSERT INTO `tarjetas_disposicion` (`id_tarjeta`, `fecha`, `turno_id`, `itinerario_id`, `materia_id`, `aula_id`, `profesor_id`, `estado`, `fecha_creacion`) VALUES
-(8, '2025-08-05', 1, 1, 793, 17, 1, 'activa', '2025-08-05 01:30:59'),
-(9, '2025-08-06', 2, 3, 36, 17, 1, 'activa', '2025-08-05 01:31:39');
+INSERT INTO `tarjetas_disposicion` (`id_tarjeta`, `fecha`, `cantidad_estudiantes`, `turno_id`, `itinerario_id`, `materia_id`, `aula_id`, `profesor_id`, `estado`, `fecha_creacion`) VALUES
+(8, '2025-08-05', '', 1, 1, 793, 17, 1, 'activa', '2025-08-05 01:30:59'),
+(9, '2025-08-06', '', 2, 3, 36, 17, 1, 'activa', '2025-08-05 01:31:39'),
+(11, '2025-09-07', '50', 2, 3, 649, 17, 2, 'activa', '2025-09-05 15:27:26');
 
 -- --------------------------------------------------------
 
@@ -1585,7 +1587,7 @@ ALTER TABLE `aulas`
 -- AUTO_INCREMENT de la tabla `carreras`
 --
 ALTER TABLE `carreras`
-  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos_pre_admisiones`
@@ -1615,7 +1617,7 @@ ALTER TABLE `profesores`
 -- AUTO_INCREMENT de la tabla `tarjetas_disposicion`
 --
 ALTER TABLE `tarjetas_disposicion`
-  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
