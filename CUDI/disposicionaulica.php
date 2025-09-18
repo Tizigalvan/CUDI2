@@ -218,7 +218,7 @@ $dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes',
         }
 
         .header {
-            background: linear-gradient(135deg, #3B6CDC 0%, #6BD4E2 100%);
+            background: linear-gradient(135deg, #1d4e89 0%, #3a7ebc, #5aa6d1, #8bc8e5, #b3e0f2, #d6f0f8); 100%);
             color: white;
             padding: 20px 0;
             text-align: center;
@@ -233,25 +233,43 @@ $dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes',
 
         .header-links {
             margin-top: 15px;
-        display: flex;
+            display: flex;
             gap: 20px;
             justify-content: center;
         }
 
         .header-link {
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-            font-weight: 500;
+            border: none;
+            color: #fff;
+            background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+            border-radius: 20px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.6em 1.5em;
+            text-decoration:none;
+            text-decoration: inherit;
+
         }
 
         .header-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
+           background-position: right center;
+           background-size: 200% auto;
+          -webkit-animation: pulse 2s infinite;
+           animation: pulse512 1.5s infinite;
+         }
+    
+       @keyframes pulse512 {
+        0% {
+        box-shadow: 0 0 0 0 #05bada66;
         }
+      70% {
+         box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+        }
+      100% {
+         box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+        }
+    }
 
         .controls {
             background: white;
@@ -992,6 +1010,301 @@ $dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes',
                 margin: 2% auto 2% auto;
                 max-height: 80vh;
             }
+            .custom-select-container {
+    position: relative;
+    width: 250px;
+    user-select: none;
+}
+
+.custom-select-display {
+    padding: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: white;
+}
+
+.custom-select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    background: white;
+    z-index: 1000;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.custom-select-option {
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.custom-select-option:hover, .custom-select-option.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-select-option.hidden {
+    display: none;
+}
+
+.custom-select-option.disabled {
+    color: #999;
+    cursor: not-allowed;
+}
+.custom-select-option .aula-nombre {
+    font-weight: bold;
+}
+
+.custom-select-option .aula-capacidad {
+    font-style: italic;
+    font-size: smaller;
+    color: #666;
+}
+
+.modal-selector {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 300px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.modal-content input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.custom-select-options {
+    max-height: 250px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+}
+
+.custom-select-option {
+    padding: 6px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.custom-select-option:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-select-option .aula-nombre {
+    font-weight: bold;
+}
+
+.custom-select-option .aula-capacidad {
+    font-size: smaller;
+    font-style: italic;
+    color: #666;
+}
+.custom-select-container {
+    position: relative;
+    width: 250px;
+    user-select: none;
+    font-family: sans-serif;
+}
+
+.custom-select-display {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    position: relative;
+    font-size: 14px;
+}
+
+.custom-select-display::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 12px;
+}
+
+.custom-select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    background: white;
+    z-index: 1000;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    padding: 8px;
+}
+
+.custom-select-dropdown input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.custom-select-options {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.custom-select-option {
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.custom-select-option:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-select-option .aula-nombre {
+    font-weight: bold;
+}
+
+.custom-select-option .aula-capacidad {
+    font-size: smaller;
+    font-style: italic;
+    color: #666;
+}
+/* Estilos para que el select se vea como el de Materia */
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-control::-ms-expand {
+    background-color: transparent;
+    border: 0;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+.custom-select-container {
+    position: relative;
+    width: 250px; /* O el ancho que necesites */
+}
+/* Estilos para el contenedor del selector */
+.custom-select-container {
+    position: relative;
+    width: 250px;
+    user-select: none;
+    font-family: sans-serif;
+}
+
+/* Estilos para la parte visible del selector */
+.custom-select-display {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: white;
+    border-radius: 4px;
+    position: relative;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo para la flecha */
+.custom-select-arrow {
+    margin-left: 10px;
+    color: #888;
+    font-size: 12px;
+}
+
+/* Estilos para el menú desplegable */
+.custom-select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    background: white;
+    z-index: 1000;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    padding: 8px;
+}
+
+/* Estilos para el campo de búsqueda */
+.custom-select-dropdown input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; /* Para que el padding no afecte el ancho */
+}
+
+/* Estilos para la lista de opciones */
+.custom-select-options {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Estilos para cada opción de la lista */
+.custom-select-option {
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.custom-select-option:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-select-option.hidden {
+    display: none;
+}
+
+/* Estilos para el texto de las opciones */
+.custom-select-option .aula-nombre {
+    font-weight: bold;
+}
+
+.custom-select-option .aula-capacidad {
+    font-size: smaller;
+    font-style: italic;
+    color: #666;
+}
         }
     </style>
 </head>
@@ -1002,6 +1315,8 @@ $dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes',
             <a href="materias.php" class="header-link">Materias</a>
             <a href="profesores.php" class="header-link">Profesores</a>
             <a href="detalle_dia.php?fecha=<?php echo date('Y-m-d'); ?>" class="header-link">Ver Hoy</a>
+            <a href="carreras.php" class="header-link">Carreras</a>
+            <a href="curso_ingreso.php" class="header-link">Cursos de Pre-Admisión</a>
         </div>
     </div>
 
@@ -1252,13 +1567,21 @@ $dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes',
                         </div>
                     </div>
                 </div>
-                
-                <div class="form-group">
-                    <label>Aula:</label>
-                    <select name="aula_id" required disabled id="aula_field">
-                        <option value="">Primero ingrese cantidad de estudiantes</option>
-                    </select>
+      <div class="form-group">
+    <label>Aula:</label>
+    <div class="custom-select-container" id="aula_selector_container">
+        <div class="custom-select-header" onclick="toggleAulaSelect()">
+            <span id="aula_selected_text">Seleccionar Aula</span>
+            <span class="custom-select-arrow">▼</span>
+        </div>
+        <div class="custom-select-dropdown" id="aula_dropdown" style="display:none;">
+            <input type="text" id="buscar_aula" placeholder="Buscar aula..." oninput="filtrarAulas(this.value)" />
+            <div id="aula_options" class="custom-select-options">
                 </div>
+        </div>
+        <input type="hidden" id="aula_hidden" name="aula_id" value="">
+    </div>
+</div>
                 
                 <div class="modal-actions">
                     <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
@@ -2081,7 +2404,336 @@ $dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes',
                 }, 3000);
             });
         }
+// La función `toggleAulaSelect` se mantiene igual. Solo se agrega la llamada a la nueva función de filtrado.
+function toggleAulaSelect() {
+    const container = document.getElementById('aula_selector_container');
+    const dropdown = document.getElementById('aula_dropdown');
 
+    if (container.classList.contains('open')) {
+        container.classList.remove('open');
+        dropdown.style.display = 'none';
+    } else {
+        container.classList.add('open');
+        dropdown.style.display = 'block';
+        document.getElementById('buscar_aula').focus();
+        
+        // **NUEVO:** Llama a la función de filtrado por cantidad al abrir el selector
+        filtrarAulasPorCantidad();
+    }
+}
+
+// Las funciones `selectAula` y `filtrarAulas` se mantienen igual.
+function filtrarAulas(busqueda) {
+    const options = document.querySelectorAll('#aula_options .custom-select-option');
+    const textoBusquedaNormalizado = busqueda.trim().toLowerCase();
+
+    options.forEach(option => {
+        const nombre = option.getAttribute('data-nombre').toLowerCase();
+        const capacidad = option.getAttribute('data-capacidad').toLowerCase();
+        if (nombre.includes(textoBusquedaNormalizado) || capacidad.includes(textoBusquedaNormalizado)) {
+            option.classList.remove('hidden');
+        } else {
+            option.classList.add('hidden');
+        }
+    });
+}
+
+function selectAula(element) {
+    const value = element.getAttribute('data-value');
+    const nombre = element.getAttribute('data-nombre');
+    const capacidad = element.getAttribute('data-capacidad');
+
+    document.getElementById('aula_hidden').value = value;
+    document.getElementById('aula_selected_text').innerHTML = `${nombre} <br><small style="font-style:italic; color:#666;">Capacidad: ${capacidad}</small>`;
+
+    // Quitar selección anterior
+    document.querySelectorAll('#aula_options .custom-select-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+
+    // Marcar seleccionado
+    element.classList.add('selected');
+
+    // Cerrar dropdown
+    document.getElementById('aula_selector_container').classList.remove('open');
+    document.getElementById('aula_dropdown').style.display = 'none';
+}
+
+document.addEventListener('click', function(e) {
+    const aulaContainer = document.getElementById('aula_selector_container');
+    if (aulaContainer && !aulaContainer.contains(e.target)) {
+        aulaContainer.classList.remove('open');
+        document.getElementById('aula_dropdown').style.display = 'none';
+    }
+});
+
+// Esta función es redundante con toggleAulaSelect, se mantiene para la estructura
+function mostrarSelectorAula() {
+    document.getElementById('selector_aula_modal').style.display = 'block';
+    document.getElementById('buscar_aula').focus();
+}
+
+function ocultarSelectorAula() {
+    document.getElementById('selector_aula_modal').style.display = 'none';
+}
+
+function filtrarAulas(busqueda) {
+    const options = document.querySelectorAll('#aula_options .custom-select-option');
+    const texto = busqueda.trim().toLowerCase();
+
+    options.forEach(option => {
+        const nombre = option.getAttribute('data-nombre').toLowerCase();
+        const capacidad = option.getAttribute('data-capacidad').toLowerCase();
+
+        if (nombre.includes(texto) || capacidad.includes(texto)) {
+            option.style.display = 'block';
+        } else {
+            option.style.display = 'none';
+        }
+    });
+}
+
+function selectAula(element) {
+    const nombre = element.getAttribute('data-nombre');
+    const capacidad = element.getAttribute('data-capacidad');
+    const id = element.getAttribute('data-value');
+
+    document.getElementById('aula_hidden').value = id;
+    document.getElementById('aula_seleccionada_display').innerHTML = `
+        ${nombre}<br>
+        <small style="font-style:italic; color:#666;">Capacidad: ${capacidad}</small>
+    `;
+
+    ocultarSelectorAula();
+}
+
+// Simulación de datos desde PHP
+const aulasData = <?php 
+    $aulas_array = [];
+    $aulas->data_seek(0);
+    while ($aula = $aulas->fetch_assoc()) {
+        $aulas_array[] = $aula;
+    }
+    echo json_encode($aulas_array);
+?>;
+
+// Cargar las aulas al inicio
+document.addEventListener('DOMContentLoaded', function () {
+    const contenedor = document.getElementById('aula_options');
+    contenedor.innerHTML = ''; // Limpiar opciones anteriores
+
+    // **NUEVO:** Ordena las aulas por capacidad de menor a mayor
+    aulasData.sort((a, b) => a.cantidad - b.cantidad);
+
+    if (aulasData.length === 0) {
+        contenedor.innerHTML = '<div class="custom-select-option disabled">No hay aulas disponibles</div>';
+        return;
+    }
+
+    // Crea y añade las opciones al contenedor
+    aulasData.forEach(aula => {
+        const div = document.createElement('div');
+        div.classList.add('custom-select-option');
+        div.setAttribute('data-value', aula.id_aula);
+        div.setAttribute('data-nombre', aula.numero);
+        div.setAttribute('data-capacidad', aula.cantidad);
+        div.innerHTML = `<div class="aula-nombre">${aula.numero}</div><div class="aula-capacidad">Capacidad: ${aula.cantidad}</div>`;
+        div.addEventListener('click', function() {
+            selectAula(this);
+        });
+        contenedor.appendChild(div);
+    });
+});
+
+// Cierra el menú si se hace clic fuera de él
+document.addEventListener('click', function(e) {
+    const aulaContainer = document.getElementById('aula_selector_container');
+    if (aulaContainer && !aulaContainer.contains(e.target)) {
+        aulaContainer.classList.remove('open');
+        document.getElementById('aula_dropdown').style.display = 'none';
+    }
+});
+
+// Función para mostrar/ocultar el menú desplegable
+function toggleAulaSelect() {
+    const dropdown = document.getElementById('aula_dropdown');
+    const container = document.getElementById('aula_selector_container');
+
+    // Si el menú está oculto, lo muestra y enfoca el buscador
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'block';
+        container.classList.add('open');
+        document.getElementById('buscar_aula').focus();
+    } else {
+        // Si el menú está visible, lo oculta
+        dropdown.style.display = 'none';
+        container.classList.remove('open');
+    }
+}
+
+// Función para filtrar las opciones de aulas
+function filtrarAulas(busqueda) {
+    const options = document.querySelectorAll('#aula_options .custom-select-option');
+    const textoBusquedaNormalizado = busqueda.trim().toLowerCase();
+
+    options.forEach(option => {
+        const nombre = option.getAttribute('data-nombre').toLowerCase();
+        const capacidad = option.getAttribute('data-capacidad').toLowerCase();
+
+        // Muestra u oculta la opción según si coincide con la búsqueda
+        if (nombre.includes(textoBusquedaNormalizado) || capacidad.includes(textoBusquedaNormalizado)) {
+            option.classList.remove('hidden');
+        } else {
+            option.classList.add('hidden');
+        }
+    });
+}
+
+// Función para seleccionar un aula
+function selectAula(element) {
+    const value = element.getAttribute('data-value');
+    const nombre = element.getAttribute('data-nombre');
+    const capacidad = element.getAttribute('data-capacidad');
+
+    document.getElementById('aula_hidden').value = value;
+    // Muestra el nombre y la capacidad en el display
+    document.getElementById('aula_selected_text').innerHTML = `Aula ${nombre}<br><small style="font-style:italic; color:#666;">Capacidad: ${capacidad}</small>`;
+
+    // Oculta el menú desplegable
+    document.getElementById('aula_dropdown').style.display = 'none';
+    document.getElementById('aula_selector_container').classList.remove('open');
+}
+
+// Función para cargar las opciones de aulas desde una fuente de datos (simulado con PHP)
+function cargarOpcionesAulas() {
+    const contenedorOpciones = document.getElementById('aula_options');
+    contenedorOpciones.innerHTML = ''; // Limpiar opciones anteriores
+
+    // Simulación de datos desde PHP (esto es lo que recibes del servidor)
+    const aulasData = <?php 
+        $aulas_array = [];
+        $aulas->data_seek(0);
+        while ($aula = $aulas->fetch_assoc()) {
+            $aulas_array[] = $aula;
+        }
+        echo json_encode($aulas_array);
+    ?>;
+
+    if (aulasData.length === 0) {
+        contenedorOpciones.innerHTML = '<div class="custom-select-option disabled">No hay aulas disponibles</div>';
+        return;
+    }
+
+    // Crea y añade las opciones al contenedor
+    aulasData.forEach(aula => {
+        const div = document.createElement('div');
+        div.classList.add('custom-select-option');
+        div.setAttribute('data-value', aula.id_aula);
+        div.setAttribute('data-nombre', aula.numero);
+        div.setAttribute('data-capacidad', aula.cantidad);
+        div.innerHTML = `<div class="aula-nombre">${aula.numero}</div><div class="aula-capacidad">Capacidad: ${aula.cantidad}</div>`;
+        div.addEventListener('click', function() {
+            selectAula(this);
+        });
+        contenedorOpciones.appendChild(div);
+    });
+}
+
+// Carga las opciones cuando la página esté lista
+document.addEventListener('DOMContentLoaded', cargarOpcionesAulas);
+
+// Cierra el menú si se hace clic fuera de él
+document.addEventListener('click', function(e) {
+    const aulaContainer = document.getElementById('aula_selector_container');
+    if (aulaContainer && !aulaContainer.contains(e.target)) {
+        aulaContainer.classList.remove('open');
+        document.getElementById('aula_dropdown').style.display = 'none';
+    }
+});
+
+// **NUEVA FUNCIÓN:** Filtra las aulas por la cantidad de estudiantes
+function filtrarAulasPorCantidad() {
+    const cantidadEstudiantesInput = document.getElementById('cantidad_estudiantes');
+    const cantidadEstudiantes = parseInt(cantidadEstudiantesInput.value);
+
+    // Si el valor no es un número válido o es 0, no aplicamos el filtro
+    if (isNaN(cantidadEstudiantes) || cantidadEstudiantes <= 0) {
+        // Muestra todas las aulas
+        document.querySelectorAll('#aula_options .custom-select-option').forEach(option => {
+            option.style.display = 'block';
+        });
+        return;
+    }
+
+    // Itera sobre las opciones de aulas y las oculta si no cumplen con la capacidad
+    document.querySelectorAll('#aula_options .custom-select-option').forEach(option => {
+        const capacidad = parseInt(option.getAttribute('data-capacidad'));
+        if (capacidad >= cantidadEstudiantes) {
+            option.style.display = 'block';
+        } else {
+            option.style.display = 'none';
+        }
+    });
+}
+
+// **NUEVA LLAMADA:** Escucha los cambios en el campo de cantidad de estudiantes
+document.addEventListener('DOMContentLoaded', function() {
+    const cantidadEstudiantesInput = document.getElementById('cantidad_estudiantes');
+    if (cantidadEstudiantesInput) {
+        cantidadEstudiantesInput.addEventListener('input', filtrarAulasPorCantidad);
+    }
+});
+function filtrarAulasPorCantidad() {
+    const cantidadEstudiantesInput = document.getElementById('cantidad_estudiantes');
+    const cantidadEstudiantes = parseInt(cantidadEstudiantesInput.value);
+    const contenedorOpciones = document.getElementById('aula_options');
+    
+    // Obtener todas las aulas (los datos originales)
+    const aulasData = <?php 
+        $aulas_array = [];
+        $aulas->data_seek(0);
+        while ($aula = $aulas->fetch_assoc()) {
+            $aulas_array[] = $aula;
+        }
+        echo json_encode($aulas_array);
+    ?>;
+
+    // Filtrar las aulas que cumplen con la capacidad requerida
+    let aulasFiltradas = aulasData.filter(aula => {
+        // Si el valor no es un número válido o es menor o igual a 0,
+        // no se aplica el filtro de capacidad, se consideran todas las aulas.
+        if (isNaN(cantidadEstudiantes) || cantidadEstudiantes <= 0) {
+            return true;
+        }
+        return parseInt(aula.cantidad) >= cantidadEstudiantes;
+    });
+
+    // Ordenar las aulas filtradas de menor a mayor capacidad
+    aulasFiltradas.sort((a, b) => parseInt(a.cantidad) - parseInt(b.cantidad));
+
+    // Limpiar el contenedor de opciones antes de volver a renderizar
+    contenedorOpciones.innerHTML = '';
+    
+    // Si no hay aulas filtradas, mostrar un mensaje
+    if (aulasFiltradas.length === 0) {
+        contenedorOpciones.innerHTML = '<div class="custom-select-option disabled">No hay aulas disponibles</div>';
+        return;
+    }
+
+    // Renderizar las aulas filtradas y ordenadas
+    aulasFiltradas.forEach(aula => {
+        const div = document.createElement('div');
+        div.classList.add('custom-select-option');
+        div.setAttribute('data-value', aula.id_aula);
+        div.setAttribute('data-nombre', aula.numero);
+        div.setAttribute('data-capacidad', aula.cantidad);
+        div.innerHTML = `<div class="aula-nombre">${aula.numero}</div><div class="aula-capacidad">Capacidad: ${aula.cantidad}</div>`;
+        div.addEventListener('click', function() {
+            selectAula(this);
+        });
+        contenedorOpciones.appendChild(div);
+    });
+}
         // Event listeners para el formulario
         document.addEventListener('DOMContentLoaded', function() {
             const turnoSelect = document.querySelector('select[name="turno_id"]');
