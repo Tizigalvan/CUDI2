@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2025 a las 03:31:52
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 08-09-2025 a las 20:00:24
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `aulas` (
   `id_aula` int(11) NOT NULL,
   `piso` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `numero` varchar(20) NOT NULL
+  `numero` varchar(20) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -69,7 +69,7 @@ INSERT INTO `aulas` (`id_aula`, `piso`, `cantidad`, `numero`) VALUES
 
 CREATE TABLE `carreras` (
   `id_carrera` int(11) NOT NULL,
-  `nombre` varchar(80) NOT NULL,
+  `nombre` varchar(80) COLLATE utf8_spanish2_ci NOT NULL,
   `universidad_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -94,7 +94,7 @@ INSERT INTO `carreras` (`id_carrera`, `nombre`, `universidad_id`) VALUES
 
 CREATE TABLE `cursos_pre_admisiones` (
   `id_curso_pre_admision` int(11) NOT NULL,
-  `nombre_curso` varchar(50) NOT NULL
+  `nombre_curso` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -141,7 +141,7 @@ INSERT INTO `itinerario` (`id_itinerario`, `hora_fin`, `hora_inicio`, `turno_id`
 
 CREATE TABLE `materias` (
   `id_materia` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `carrera_id` int(11) DEFAULT NULL,
   `curso_pre_admision_id` int(11) DEFAULT NULL,
   `profesor_id` int(11) DEFAULT NULL
@@ -716,7 +716,7 @@ INSERT INTO `materias` (`id_materia`, `nombre`, `carrera_id`, `curso_pre_admisio
 (586, 'Enfermería Pediátrica', 7, NULL, NULL),
 (587, 'Introducción a la Administración en Enfermería', 7, NULL, NULL),
 (588, 'Introducción a la Salud Comunitaria', 8, NULL, NULL),
-(589, 'Anátomo-Fisiología I', 8, NULL, NULL),
+(589, 'Anátomo-Fisiología I', 8, NULL, 1),
 (590, 'Genética Humana', 8, NULL, NULL),
 (591, 'Introducción a la Obstetricia', 8, NULL, NULL),
 (592, 'Anátomo-Fisiología II', 8, NULL, NULL),
@@ -1386,9 +1386,9 @@ INSERT INTO `materias` (`id_materia`, `nombre`, `carrera_id`, `curso_pre_admisio
 
 CREATE TABLE `profesores` (
   `id_profesor` int(11) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
-  `apellido` varchar(20) NOT NULL,
-  `correo` varchar(40) DEFAULT NULL,
+  `nombre` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `apellido` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `correo` varchar(40) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `telefono` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -1409,12 +1409,13 @@ INSERT INTO `profesores` (`id_profesor`, `nombre`, `apellido`, `correo`, `telefo
 CREATE TABLE `tarjetas_disposicion` (
   `id_tarjeta` int(11) NOT NULL,
   `fecha` date NOT NULL,
+  `cantidad_estudiantes` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `turno_id` int(11) NOT NULL,
   `itinerario_id` int(11) NOT NULL,
   `materia_id` int(11) NOT NULL,
   `aula_id` int(11) NOT NULL,
   `profesor_id` int(11) NOT NULL,
-  `estado` enum('activa','duplicada','programada') DEFAULT 'activa',
+  `estado` enum('activa','duplicada','programada') COLLATE utf8mb4_unicode_ci DEFAULT 'activa',
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1422,9 +1423,11 @@ CREATE TABLE `tarjetas_disposicion` (
 -- Volcado de datos para la tabla `tarjetas_disposicion`
 --
 
-INSERT INTO `tarjetas_disposicion` (`id_tarjeta`, `fecha`, `turno_id`, `itinerario_id`, `materia_id`, `aula_id`, `profesor_id`, `estado`, `fecha_creacion`) VALUES
-(8, '2025-08-05', 1, 1, 793, 17, 1, 'activa', '2025-08-05 01:30:59'),
-(9, '2025-08-06', 2, 3, 36, 17, 1, 'activa', '2025-08-05 01:31:39');
+INSERT INTO `tarjetas_disposicion` (`id_tarjeta`, `fecha`, `cantidad_estudiantes`, `turno_id`, `itinerario_id`, `materia_id`, `aula_id`, `profesor_id`, `estado`, `fecha_creacion`) VALUES
+(8, '2025-08-05', '', 1, 1, 793, 17, 1, 'activa', '2025-08-05 01:30:59'),
+(9, '2025-08-06', '', 2, 3, 36, 17, 1, 'activa', '2025-08-05 01:31:39'),
+(11, '2025-09-07', '50', 2, 3, 649, 17, 2, 'activa', '2025-09-05 15:27:26'),
+(12, '2025-09-11', '1', 1, 1, 36, 17, 1, 'activa', '2025-09-08 16:55:41');
 
 -- --------------------------------------------------------
 
@@ -1434,7 +1437,7 @@ INSERT INTO `tarjetas_disposicion` (`id_tarjeta`, `fecha`, `turno_id`, `itinerar
 
 CREATE TABLE `turnos` (
   `id_turno` int(11) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
+  `nombre` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hora_inicio` time NOT NULL,
   `hora_fin` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1456,8 +1459,8 @@ INSERT INTO `turnos` (`id_turno`, `nombre`, `hora_inicio`, `hora_fin`) VALUES
 
 CREATE TABLE `universidades` (
   `id_universidad` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `acronimo` varchar(6) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `acronimo` varchar(6) COLLATE utf8_spanish2_ci NOT NULL,
   `curso_pre_admision_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -1480,8 +1483,8 @@ INSERT INTO `universidades` (`id_universidad`, `nombre`, `acronimo`, `curso_pre_
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
-  `nombre_usuario` varchar(20) NOT NULL,
-  `contraseña` varchar(255) NOT NULL
+  `nombre_usuario` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `contraseña` varchar(255) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -1585,7 +1588,7 @@ ALTER TABLE `aulas`
 -- AUTO_INCREMENT de la tabla `carreras`
 --
 ALTER TABLE `carreras`
-  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos_pre_admisiones`
@@ -1615,7 +1618,7 @@ ALTER TABLE `profesores`
 -- AUTO_INCREMENT de la tabla `tarjetas_disposicion`
 --
 ALTER TABLE `tarjetas_disposicion`
-  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
